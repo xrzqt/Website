@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Daniyal Islam: IT desk administrator, PC builder and Information Systems student at UMBC.">
+<title>Daniyal Islam</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: Apple-style product page. Dark stage, big centered statements, product renders,
+   one scroll-scrubbed sticky section for the home lab, horizontal card rail for experience. */
+:root {
+  --bg: #050506;
+  --bg2: #0d0d10;
+  --card: #141418;
+  --line: #24242b;
+  --fg: #f5f5f7;
+  --muted: #8e8e96;
+  --heat: #ff8a3d;
+  --heat2: #ff4d4d;
+  --cool: #5ab0ff;
+  --ok: #3ddc84;
+  --display: "Inter Tight", -apple-system, "SF Pro Display", system-ui, sans-serif;
+  --sans: -apple-system, "SF Pro Text", "Inter", system-ui, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--sans); font-size: 17px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 20; background: rgba(5,5,6,.8);
+}
+a { color: inherit; }
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--heat); margin: 0; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.025em; }
+.big { font-size: clamp(40px, 9vw, 96px); font-weight: 700; line-height: 1.02; }
+.h2 { font-size: clamp(32px, 6.5vw, 64px); font-weight: 700; line-height: 1.05; }
+.lead { font-size: clamp(18px, 2.4vw, 22px); color: var(--muted); max-width: 40ch; margin: 0 auto; }
+.lead b { color: var(--fg); font-weight: 600; }
+.metal {
+  background: linear-gradient(180deg, #ffffff 0%, #c9c9d1 55%, #7d7d88 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hot {
+  background: linear-gradient(90deg, var(--heat) 0%, var(--heat2) 50%, var(--heat) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: flow 6s linear infinite;
+}
+@keyframes flow { to { background-position: -200% 0; } }
+
+/* ---------- nav ---------- */
+nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 15;
+  background: rgba(5,5,6,.72);
+  backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav-in { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo { font-family: var(--display); font-weight: 600; font-size: 17px; text-decoration: none; letter-spacing: -0.01em; }
+.logo span { color: var(--heat); }
+.nav-links { display: flex; gap: 26px; font-size: 13px; color: #d0d0d6; }
+.nav-links a { text-decoration: none; opacity: .8; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; }
+.menu-wrap { position: relative; }
+.menu-btn {
+  font: 500 13px var(--sans); color: var(--fg); background: rgba(255,255,255,.08);
+  border: 0; border-radius: 999px; height: 32px; padding: 0 14px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px; transition: background .2s;
+}
+.menu-btn:hover { background: rgba(255,255,255,.14); }
+.menu-btn:focus-visible, .cta:focus-visible, .copy:focus-visible { outline: 2px solid var(--heat); outline-offset: 3px; }
+.chev { transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+.menu-wrap.open .chev { transform: rotate(180deg); }
+.menu {
+  position: absolute; right: 0; top: calc(100% + 10px); width: 240px; padding: 8px;
+  background: rgba(22,22,26,.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.8);
+  opacity: 0; transform: translateY(-8px) scale(.97); transform-origin: top right;
+  pointer-events: none; transition: opacity .2s, transform .25s cubic-bezier(.2,.8,.2,1);
+}
+.menu-wrap.open .menu { opacity: 1; transform: none; pointer-events: auto; }
+.menu a {
+  display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 10px;
+  padding: 10px; border-radius: 10px; text-decoration: none; font-size: 15px;
+}
+.menu a small { display: block; color: var(--muted); font-size: 12px; }
+.menu a:hover, .menu a:focus-visible { background: rgba(255,255,255,.07); outline: none; }
+.mi { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: rgba(255,138,61,.14); color: var(--heat); font-family: var(--mono); font-size: 11px; }
+@media (max-width: 720px) { .nav-links { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { text-align: center; padding-block: clamp(56px, 10vw, 110px) 0; display: grid; gap: 18px; justify-items: center; }
+.hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+.cta {
+  display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 22px;
+  border-radius: 999px; font-size: 15px; font-weight: 500; text-decoration: none;
+  background: var(--fg); color: #000; transition: transform .2s, background .2s;
+}
+.cta:hover { transform: scale(1.03); }
+.cta.ghost { background: transparent; color: var(--heat); padding: 0 8px; }
+.cta.ghost:hover { text-decoration: underline; transform: none; }
+.stage { position: relative; width: min(560px, 100%); margin: 28px auto 0; }
+.stage::before {
+  content: ""; position: absolute; left: 50%; top: 55%; width: 90%; aspect-ratio: 1;
+  transform: translate(-50%,-50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,110,50,.35), rgba(90,176,255,.12) 45%, transparent 70%);
+  filter: blur(40px); animation: breathe 6s ease-in-out infinite;
+}
+@keyframes breathe { 50% { opacity: .6; transform: translate(-50%,-50%) scale(1.08); } }
+.stage svg { position: relative; width: 100%; height: auto; display: block; animation: float 7s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-10px); } }
+.fan { transform-box: fill-box; transform-origin: center; animation: spin 1.6s linear infinite; }
+.fan.f2 { animation-duration: 1.9s; } .fan.f3 { animation-duration: 1.4s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.rgb { animation: hue 8s linear infinite; }
+@keyframes hue { to { filter: hue-rotate(360deg); } }
+
+/* ---------- reveal on scroll ---------- */
+.rv { transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+.js .rv:not(.in) { opacity: .25; transform: translateY(40px) scale(.98); }
+
+section { padding-block: clamp(80px, 14vw, 160px); scroll-margin-top: 52px; }
+.center { text-align: center; display: grid; gap: 18px; justify-items: center; }
+
+/* ---------- build specs ---------- */
+.build { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); }
+.specs { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border-radius: 22px; overflow: hidden; }
+.spec { background: var(--bg2); padding: 28px 22px; display: grid; gap: 6px; text-align: left; min-width: 0; }
+.spec .num { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 5vw, 52px); line-height: 1; font-variant-numeric: tabular-nums; }
+.spec .num sup { font-size: .4em; color: var(--muted); font-weight: 600; margin-left: 2px; vertical-align: .9em; }
+.spec .lbl { font-weight: 600; }
+.spec .sub { color: var(--muted); font-size: 14px; }
+@media (max-width: 760px) { .specs { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- home lab sticky scrub ---------- */
+.lab { padding: 0; position: relative; height: 280vh; }
+.lab-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; align-items: center; }
+.lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.lab-art { position: relative; display: grid; place-items: center; }
+.lab-art svg { width: min(420px, 100%); height: auto; transition: transform .1s linear; will-change: transform; }
+.lab-art::before {
+  content: ""; position: absolute; width: 80%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, var(--glow, rgba(90,176,255,.28)), transparent 70%); filter: blur(30px);
+  transition: background .6s;
+}
+.panels { display: grid; }
+.panel { grid-area: 1 / 1; display: grid; align-content: center; gap: 14px; opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s cubic-bezier(.2,.7,.2,1); }
+.panel.on { opacity: 1; transform: none; }
+.panel p:not(.eyebrow) { color: var(--muted); margin: 0; max-width: 38ch; font-size: 18px; }
+.panel p:not(.eyebrow) b { color: var(--fg); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--mono); font-size: 12px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); color: #d6d6dc; }
+.dots { display: flex; gap: 8px; margin-top: 8px; }
+.dots i { width: 28px; height: 3px; border-radius: 2px; background: var(--line); overflow: hidden; position: relative; }
+.dots i span { position: absolute; inset: 0; background: var(--fg); transform-origin: left; transform: scaleX(var(--p, 0)); }
+.led { animation: blink var(--d, 1.2s) steps(2) infinite; animation-delay: var(--o, 0s); }
+@keyframes blink { 50% { opacity: .15; } }
+@media (max-width: 760px) {
+  .lab-grid { grid-template-columns: 1fr; gap: 8px; }
+  .lab-stick { align-items: start; padding-top: 64px; }
+  .lab-art svg { width: min(190px, 48vw); }
+  .panel { align-content: start; text-align: center; justify-items: center; gap: 10px; }
+  .panel p:not(.eyebrow) { font-size: 16px; }
+  .dots { justify-content: center; }
+  .chips { justify-content: center; }
+}
+
+/* ---------- bento ---------- */
+.bento { margin-top: 56px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.tile {
+  position: relative; background: var(--card); border-radius: 24px; padding: 28px;
+  display: grid; gap: 10px; align-content: start; overflow: hidden; min-width: 0;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+}
+.tile::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.07), transparent 60%);
+}
+.tile:hover::after { opacity: 1; }
+.tile h3 { font-size: 24px; font-weight: 600; }
+.tile p { margin: 0; color: var(--muted); font-size: 15px; }
+.tile .k { font-family: var(--mono); font-size: 12px; color: var(--heat); }
+.t-wide { grid-column: span 4; } .t-sm { grid-column: span 2; } .t-half { grid-column: span 3; }
+.tile svg { width: 100%; height: auto; margin-top: 8px; }
+@media (max-width: 760px) { .bento { grid-template-columns: 1fr; } .t-wide, .t-sm, .t-half { grid-column: auto; } }
+
+/* ---------- experience rail ---------- */
+.rail-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
+.rail-ctl { display: flex; gap: 10px; }
+.rail-ctl button {
+  width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.1);
+  color: var(--fg); cursor: pointer; font-size: 18px; transition: background .2s;
+}
+.rail-ctl button:hover { background: rgba(255,255,255,.18); }
+.rail-ctl button:disabled { opacity: .3; cursor: default; }
+.rail-ctl button { touch-action: manipulation; }
+.rail-ctl button:focus-visible { outline: 2px solid var(--heat); outline-offset: 2px; }
+.rail {
+  margin-top: 40px; display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 18px; scrollbar-width: none;
+  padding-left: max(20px, calc((100vw - 1080px)/2 + 20px));
+  padding-right: max(20px, calc((100vw - 1080px)/2 + 20px));
+  scroll-padding-left: max(20px, calc((100vw - 1080px)/2 + 20px));
+}
+.rail::-webkit-scrollbar { display: none; }
+.job {
+  flex: 0 0 min(360px, 82vw); scroll-snap-align: start;
+  background: var(--card); border-radius: 24px; padding: 28px; display: grid; gap: 12px; align-content: start;
+  border: 1px solid transparent; transition: border-color .3s, transform .3s;
+}
+.job:hover { border-color: var(--line); transform: translateY(-4px); }
+.job .when { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.job h3 { font-size: 22px; font-weight: 600; }
+.job .org { color: var(--heat); font-size: 15px; margin-top: -6px; }
+.job ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 6px; }
+.job.now { background: linear-gradient(160deg, #1d1410 0%, var(--card) 55%); }
+.badge { width: fit-content; font-size: 11px; font-family: var(--mono); color: var(--ok); border: 1px solid rgba(61,220,132,.35); border-radius: 999px; padding: 2px 8px; display: inline-flex; gap: 6px; align-items: center; }
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); animation: blink 1.4s steps(2) infinite; }
+
+/* ---------- projects ---------- */
+.projects { background: var(--bg2); }
+.plist { margin-top: 48px; display: grid; gap: 1px; background: var(--line); border-radius: 22px; overflow: hidden; }
+.proj { background: var(--bg2); padding: 26px 28px; display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; transition: background .3s; }
+.proj:hover { background: #121216; }
+.proj h3 { font-size: 21px; font-weight: 600; }
+.proj .tag { font-family: var(--mono); font-size: 12px; color: var(--muted); align-self: center; }
+.proj p { grid-column: 1/-1; margin: 0; color: var(--muted); font-size: 15px; max-width: 64ch; }
+@media (max-width: 520px) { .proj { grid-template-columns: 1fr; } }
+
+/* ---------- contact ---------- */
+.contact .mail {
+  font-family: var(--display); font-weight: 600; font-size: clamp(24px, 5vw, 44px);
+  letter-spacing: -0.02em; user-select: all; word-break: break-all;
+}
+.copy {
+  font: 500 15px var(--sans); color: #000; background: var(--fg); border: 0; border-radius: 999px;
+  height: 44px; padding: 0 22px; cursor: pointer; transition: transform .2s;
+}
+.copy:hover { transform: scale(1.03); }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--muted); font-size: 12px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--fg); }
+.socials { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.socials a {
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px;
+  border-radius: 999px; border: 1px solid var(--line); text-decoration: none; font-size: 15px; font-weight: 500;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.socials a:hover { border-color: var(--muted); background: rgba(255,255,255,.05); transform: translateY(-2px); }
+.socials a:focus-visible { outline: 2px solid var(--heat); outline-offset: 3px; }
+.socials svg { width: 16px; height: 16px; }
+
+
+/* ---------- added polish ---------- */
+.progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; transform-origin: left; transform: scaleX(var(--sp, 0)); background: linear-gradient(90deg, var(--heat2), var(--heat), var(--cool)); }
+.hero { position: relative; isolation: isolate; }
+.grid-bg {
+  position: absolute; z-index: -1; top: -52px; left: 50%; width: 100vw; height: calc(100% + 52px); transform: translateX(-50%);
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 20%, transparent 75%);
+}
+.grid-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(420px circle at var(--hx, 50%) var(--hy, 30%), rgba(255,138,61,.16), transparent 60%);
+}
+.tilt { transform: perspective(1200px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform .5s cubic-bezier(.2,.8,.2,1); transform-style: preserve-3d; }
+.cta { position: relative; overflow: hidden; }
+.cta:not(.ghost)::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.6), transparent); transform: skewX(-20deg);
+}
+.cta:not(.ghost):hover::after { animation: shine .8s ease; }
+@keyframes shine { to { left: 130%; } }
+
+.ticker { margin-top: clamp(48px, 8vw, 88px); border-block: 1px solid var(--line); overflow: hidden; padding-block: 18px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.ticker-track { display: flex; width: max-content; gap: 40px; animation: tick 40s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker span { font-family: var(--mono); font-size: 14px; color: var(--muted); white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
+.ticker span::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--heat); opacity: .7; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding-block: clamp(56px, 9vw, 96px) 0; }
+.stat { display: grid; gap: 4px; text-align: center; }
+.sv { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 6vw, 60px); line-height: 1; letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #fff, #8a8a94); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sl { color: var(--muted); font-size: 14px; }
+@media (max-width: 640px) { .stats { grid-template-columns: repeat(2, 1fr); row-gap: 32px; } }
+
+.job.now { position: relative; border: 0; isolation: isolate; }
+.job.now::before {
+  content: ""; position: absolute; inset: -1px; border-radius: 25px; z-index: -2;
+  background: conic-gradient(from var(--ang, 0deg), var(--heat), transparent 25%, var(--cool) 50%, transparent 75%, var(--heat));
+  animation: rot 6s linear infinite;
+}
+.job.now::after { content: ""; position: absolute; inset: 1px; border-radius: 23px; z-index: -1; background: linear-gradient(160deg, #1d1410 0%, var(--card) 55%); }
+@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes rot { to { --ang: 360deg; } }
+
+.lab-word {
+  position: absolute; font-family: var(--display); font-weight: 700; font-size: clamp(120px, 22vw, 260px); letter-spacing: -0.04em;
+  color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.07); line-height: 1; pointer-events: none; user-select: none;
+}
+.lab-art svg { position: relative; }
+
+.h2 .hot { display: inline-block; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .rv:not(.in) { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="progress" id="prog" aria-hidden="true"></div>
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">Daniyal<span>.</span></a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#lab">Home Lab</a><a href="#build">Build</a>
+    </div>
+    <div class="menu-wrap" id="menuWrap">
+      <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menu">
+        Explore
+        <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="menu" id="menu" role="menu">
+        <a role="menuitem" href="#experience"><span class="mi">01</span><span>Experience<small>Where I've worked</small></span></a>
+        <a role="menuitem" href="#projects"><span class="mi">02</span><span>Projects<small>Code and data</small></span></a>
+        <a role="menuitem" href="#lab"><span class="mi">03</span><span>Home Lab<small>Server, VMs, local AI</small></span></a>
+        <a role="menuitem" href="#build"><span class="mi">04</span><span>The Build<small>Gaming PC specs</small></span></a>
+        <a role="menuitem" href="#bench"><span class="mi">05</span><span>On the Bench<small>Skills and side builds</small></span></a>
+        <a role="menuitem" href="#contact"><span class="mi">06</span><span>Contact<small>Get in touch</small></span></a>
+        </div>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <header class="wrap hero" id="hero">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <p class="eyebrow">Information Systems · UMBC ’27</p>
+    <h1 class="big"><span class="metal">Builds it.</span><br><span class="metal">Runs it.</span> <span class="hot">Fixes it.</span></h1>
+    <p class="lead">I’m Daniyal, an <b>IT desk administrator, PC builder and home lab tinkerer</b>. I turn hardware and data into things that just work.</p>
+    <div class="cta-row">
+      <a class="cta" href="#experience">See my experience</a>
+      <a class="cta ghost" href="#contact">Get in touch ›</a>
+    </div>
+    <div class="stage" id="stage">
+      <div class="tilt" id="tilt"><svg viewBox="0 0 470 530" role="img" aria-label="Illustration of a custom gaming PC with glass side panel, liquid cooler and lit fans">
+        <defs>
+          <linearGradient id="caseG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a31"/><stop offset="1" stop-color="#0b0b0e"/></linearGradient>
+          <linearGradient id="frontG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c22"/><stop offset="1" stop-color="#0a0a0d"/></linearGradient>
+          <linearGradient id="rimG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a0a0ac"/><stop offset=".3" stop-color="#3a3a43"/><stop offset="1" stop-color="#18181d"/></linearGradient>
+          <linearGradient id="rgbG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a3c"/><stop offset=".5" stop-color="#ff9a3d"/><stop offset="1" stop-color="#5ab0ff"/></linearGradient>
+          <linearGradient id="gpuG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22222a"/><stop offset="1" stop-color="#121217"/></linearGradient>
+          <linearGradient id="shroudG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141419"/><stop offset="1" stop-color="#0a0a0d"/></linearGradient>
+          <radialGradient id="spillG" cx=".8" cy=".45" r=".7"><stop offset="0" stop-color="#ff7a3d" stop-opacity=".22"/><stop offset=".6" stop-color="#5ab0ff" stop-opacity=".06"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+          <radialGradient id="floorG"><stop offset="0" stop-color="#ff7a3d" stop-opacity=".28"/><stop offset="1" stop-color="#ff7a3d" stop-opacity="0"/></radialGradient>
+          <linearGradient id="streak" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <clipPath id="win"><rect x="86" y="50" width="286" height="402" rx="16"/></clipPath>
+          <g id="blades" fill="#2b2b33"><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z"/><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z" transform="rotate(51)"/><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z" transform="rotate(103)"/><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z" transform="rotate(154)"/><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z" transform="rotate(206)"/><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z" transform="rotate(257)"/><path d="M0-6C8-24 20-26 24-19 18-14 10-8 0-6Z" transform="rotate(309)"/><circle r="7" fill="#131318"/><circle r="2.5" fill="#2e2e36"/></g>
+          <g id="fan"><circle r="31" fill="#09090c"/><circle r="29" fill="none" stroke="url(#rgbG)" stroke-width="3" class="rgb"/><circle r="29" fill="none" stroke="url(#rgbG)" stroke-width="8" opacity=".18" class="rgb"/></g>
+        </defs>
+        <ellipse cx="236" cy="502" rx="220" ry="20" fill="url(#floorG)"/>
+        <ellipse cx="236" cy="490" rx="160" ry="6" fill="#000" opacity=".75"/>
+        <!-- feet -->
+        <rect x="100" y="474" width="44" height="10" rx="4" fill="#17171c"/><rect x="318" y="474" width="44" height="10" rx="4" fill="#17171c"/>
+        <!-- front depth -->
+        <path d="M390 40 L414 54 Q418 57 418 62 L418 470 Q418 476 414 478 L390 474 Z" fill="url(#frontG)"/>
+        <g stroke="#22222a" stroke-width="1.5"><line x1="400" y1="80" x2="400" y2="440"/><line x1="408" y1="84" x2="408" y2="444"/></g>
+        <!-- body -->
+        <rect x="68" y="32" width="324" height="446" rx="26" fill="url(#caseG)" stroke="url(#rimG)" stroke-width="1.5"/>
+        <g stroke="#1f1f26" stroke-width="2" stroke-linecap="round"><line x1="140" y1="41" x2="320" y2="41"/></g>
+        <rect x="86" y="50" width="286" height="402" rx="16" fill="#060608"/>
+        <g clip-path="url(#win)">
+          <!-- radiator -->
+          <rect x="300" y="84" width="72" height="260" fill="#0c0c10"/>
+          <g stroke="#15151a" stroke-width="1"><line x1="300" y1="100" x2="372" y2="100"/><line x1="300" y1="140" x2="372" y2="140"/><line x1="300" y1="180" x2="372" y2="180"/><line x1="300" y1="220" x2="372" y2="220"/><line x1="300" y1="260" x2="372" y2="260"/><line x1="300" y1="300" x2="372" y2="300"/></g>
+          <!-- rear exhaust -->
+          <g transform="translate(120 104)"><use href="#fan"/><g class="fan f2"><use href="#blades"/></g></g>
+          <!-- motherboard -->
+          <rect x="150" y="66" width="140" height="240" rx="8" fill="#0f0f14" stroke="#1a1a20"/>
+          <rect x="158" y="74" width="12" height="70" rx="3" fill="#1c1c23"/>
+          <rect x="176" y="74" width="66" height="12" rx="3" fill="#1c1c23"/>
+          <g stroke="#2a2a33" stroke-width="1"><line x1="160" y1="84" x2="168" y2="84"/><line x1="160" y1="94" x2="168" y2="94"/><line x1="160" y1="104" x2="168" y2="104"/><line x1="160" y1="114" x2="168" y2="114"/><line x1="160" y1="124" x2="168" y2="124"/><line x1="160" y1="134" x2="168" y2="134"/></g>
+          <rect x="170" y="206" width="96" height="14" rx="4" fill="#1a1a21"/>
+          <g stroke="#26262e"><line x1="180" y1="213" x2="256" y2="213"/></g>
+          <!-- tubes -->
+          <path d="M226 128 C 236 88, 290 82, 304 108" stroke="#1b1b22" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M226 172 C 240 196, 290 200, 304 190" stroke="#1b1b22" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <!-- pump -->
+          <circle cx="206" cy="150" r="30" fill="#131318" stroke="#24242c"/>
+          <circle cx="206" cy="150" r="23" fill="none" stroke="url(#rgbG)" stroke-width="3" class="rgb"/>
+          <circle cx="206" cy="150" r="23" fill="none" stroke="url(#rgbG)" stroke-width="10" opacity=".15" class="rgb"/>
+          <circle cx="206" cy="150" r="13" fill="#09090c"/>
+          <!-- RAM -->
+          <rect x="256" y="94" width="9" height="96" rx="3" fill="#1b1b22"/><rect x="269" y="94" width="9" height="96" rx="3" fill="#1b1b22"/>
+          <rect x="256" y="94" width="9" height="20" rx="3" fill="url(#rgbG)" class="rgb"/><rect x="269" y="94" width="9" height="20" rx="3" fill="url(#rgbG)" class="rgb"/>
+          <!-- GPU -->
+          <rect x="104" y="238" width="194" height="52" rx="10" fill="url(#gpuG)" stroke="#2a2a33"/>
+          <path d="M118 248 L176 248 L188 260 L284 260" stroke="#33333c" stroke-width="1.5" fill="none"/>
+          <path d="M118 278 L210 278 L222 268 L284 268" stroke="#2a2a32" stroke-width="1.5" fill="none"/>
+          <rect x="110" y="286" width="182" height="3" rx="1.5" fill="url(#rgbG)" class="rgb"/>
+          <!-- cables -->
+          <g stroke="#202028" stroke-width="3" fill="none" stroke-linecap="round"><path d="M262 372 C 262 330, 270 320, 270 292"/><path d="M270 372 C 270 334, 278 322, 278 292"/><path d="M278 372 C 278 338, 286 324, 286 292"/></g>
+          <!-- front fans -->
+          <g transform="translate(336 126)"><use href="#fan"/><g class="fan"><use href="#blades"/></g></g>
+          <g transform="translate(336 214)"><use href="#fan"/><g class="fan f2"><use href="#blades"/></g></g>
+          <g transform="translate(336 302)"><use href="#fan"/><g class="fan f3"><use href="#blades"/></g></g>
+          <!-- shroud -->
+          <rect x="86" y="372" width="286" height="80" fill="url(#shroudG)"/>
+          <rect x="86" y="372" width="286" height="2" fill="url(#rgbG)" class="rgb" opacity=".8"/>
+          <g fill="#16161c"><rect x="106" y="392" width="4" height="40" rx="2"/><rect x="116" y="392" width="4" height="40" rx="2"/><rect x="126" y="392" width="4" height="40" rx="2"/><rect x="136" y="392" width="4" height="40" rx="2"/><rect x="146" y="392" width="4" height="40" rx="2"/></g>
+          <text x="352" y="418" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="3" fill="#2e2e36">DANIYAL</text>
+          <!-- light spill + glass -->
+          <rect x="86" y="50" width="286" height="402" fill="url(#spillG)"/>
+          <polygon points="150,50 196,50 96,452 86,452 86,320" fill="url(#streak)"/>
+          <polygon points="236,50 252,50 150,452 134,452" fill="url(#streak)" opacity=".7"/>
+        </g>
+        <rect x="86.5" y="50.5" width="285" height="401" rx="15.5" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+        <circle cx="372" cy="41" r="2.5" fill="#3ddc84"/><circle cx="372" cy="41" r="6" fill="#3ddc84" opacity=".2"/>
+      </svg></div>
+    </div>
+  </header>
+
+  <div class="ticker" aria-label="Tools I use"><div class="ticker-track"><span>Windows 11</span><span>macOS</span><span>Linux</span><span>Active Directory</span><span>Intune</span><span>PowerShell</span><span>Oracle SQL</span><span>PL/SQL</span><span>Python</span><span>Java</span><span>Virtual machines</span><span>PXE imaging</span><span>Network switches</span><span>Data sanitization</span><span>ServiceNow</span><span>Ollama</span><span>Windows 11</span><span>macOS</span><span>Linux</span><span>Active Directory</span><span>Intune</span><span>PowerShell</span><span>Oracle SQL</span><span>PL/SQL</span><span>Python</span><span>Java</span><span>Virtual machines</span><span>PXE imaging</span><span>Network switches</span><span>Data sanitization</span><span>ServiceNow</span><span>Ollama</span></div></div>
+
+  <div class="wrap stats rv">
+    <div class="stat"><span class="sv">2018</span><span class="sl">First time teaching code</span></div>
+    <div class="stat"><span class="sv">2021</span><span class="sl">First IT role</span></div>
+    <div class="stat"><span class="sv">3.5</span><span class="sl">GPA at UMBC</span></div>
+    <div class="stat"><span class="sv">’27</span><span class="sl">Graduating in May</span></div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="padding-inline:0">
+    <div class="wrap rail-head rv">
+      <div style="display:grid;gap:14px">
+        <p class="eyebrow">Experience</p>
+        <h2 class="h2"><span class="metal">Where I’ve put</span><br><span class="metal">it to work.</span></h2>
+      </div>
+      <div class="rail-ctl">
+        <button id="prev" aria-label="Previous">‹</button>
+        <button id="next" aria-label="Next">›</button>
+      </div>
+    </div>
+    <div class="rail" id="rail">
+      <article class="job now">
+        <span class="badge">Current</span>
+        <span class="when">May 2026 – Present</span>
+        <h3>IT Desk Administrator</h3>
+        <span class="org">Intralox · Baltimore</span>
+        <ul>
+          <li>Image computers for deployment and maintenance</li>
+          <li>Process tickets, tasks and incidents</li>
+          <li>Run regular IT equipment inventory</li>
+          <li>Assemble and maintain desktops, laptops, servers and switches</li>
+          <li>Set up and manage VMs for Windows, Linux and macOS</li>
+        </ul>
+      </article>
+      <article class="job">
+        <span class="when">Jun 2023 – Aug 2023</span>
+        <h3>Occupational Health Intern</h3>
+        <span class="org">Johns Hopkins · Columbia, MD</span>
+        <ul>
+          <li>Supported health screenings, vaccine tracking and records</li>
+          <li>Assisted with pre-employment evaluations</li>
+          <li>Maintained confidential records and scheduling</li>
+        </ul>
+      </article>
+      <article class="job">
+        <span class="when">Jul 2021 – Aug 2021</span>
+        <h3>IT Technician Intern</h3>
+        <span class="org">Laureate Education · Baltimore</span>
+        <ul>
+          <li>Decommissioned and cataloged IT hardware</li>
+          <li>Ran daily equipment audits and managed cabling</li>
+          <li>Performed data sanitization on computers and servers</li>
+          <li>Installed Windows, macOS and Linux</li>
+        </ul>
+      </article>
+      <article class="job">
+        <span class="when">May 2018 – Aug 2018</span>
+        <h3>Intern Teacher</h3>
+        <span class="org">KidoCode · Kuala Lumpur</span>
+        <ul>
+          <li>Taught foundational Python programming</li>
+          <li>Guided students building websites with HTML and CSS</li>
+          <li>Mentored debugging and portfolio work</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="wrap center rv">
+      <p class="eyebrow">Projects</p>
+      <h2 class="h2"><span class="metal">Code and</span> <span class="hot">data.</span></h2>
+    </div>
+    <div class="wrap">
+      <div class="plist rv">
+        <div class="proj"><h3>Debt Payoff Tracker</h3><span class="tag">Java · JavaFX</span><p>A desktop app that walks users through paying off debt with Ramsey’s Baby Steps, with payment tracking and debt snowball logic behind a clean GUI.</p></div>
+        <div class="proj"><h3>Maryland Education Outcomes</h3><span class="tag">Data · DSS</span><p>Decision-support app comparing graduation and higher-education outcomes across Maryland counties. I own data acquisition, cleaning and model design.</p></div>
+        <div class="proj"><h3>Hotel Management Database</h3><span class="tag">Oracle · PL/SQL</span><p>Multi-property hotel schema with stored procedures for room availability, customer spending and cross-location queries.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME LAB scrub -->
+  <section class="lab" id="lab" aria-label="Home lab">
+    <div class="lab-stick">
+      <div class="wrap lab-grid">
+        <div class="lab-art" id="labArt">
+          <span class="lab-word" aria-hidden="true">LAB</span>
+          <svg id="rack" viewBox="0 0 300 380" role="img" aria-label="Illustration of a home server rack with blinking lights">
+            <defs>
+              <linearGradient id="rk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1e1e24"/><stop offset=".5" stop-color="#2b2b33"/><stop offset="1" stop-color="#1a1a20"/></linearGradient>
+            </defs>
+            <rect x="30" y="10" width="240" height="360" rx="14" fill="url(#rk)" stroke="#3a3a44"/>
+            <rect x="44" y="24" width="212" height="332" rx="6" fill="#09090c"/>
+            <!-- switch -->
+            <g transform="translate(54 36)">
+              <rect width="192" height="34" rx="4" fill="#16161b" stroke="#2c2c34"/>
+              <g fill="#0c0c10" stroke="#33333d">
+                <rect x="10" y="10" width="14" height="12" rx="1"/><rect x="28" y="10" width="14" height="12" rx="1"/><rect x="46" y="10" width="14" height="12" rx="1"/><rect x="64" y="10" width="14" height="12" rx="1"/>
+                <rect x="82" y="10" width="14" height="12" rx="1"/><rect x="100" y="10" width="14" height="12" rx="1"/><rect x="118" y="10" width="14" height="12" rx="1"/><rect x="136" y="10" width="14" height="12" rx="1"/>
+              </g>
+              <g fill="#3ddc84"><circle class="led" style="--d:.7s" cx="17" cy="7" r="1.6"/><circle class="led" style="--d:1.1s;--o:.2s" cx="35" cy="7" r="1.6"/><circle class="led" style="--d:.5s" cx="53" cy="7" r="1.6"/><circle class="led" style="--d:.9s;--o:.4s" cx="89" cy="7" r="1.6"/><circle class="led" style="--d:.6s;--o:.1s" cx="125" cy="7" r="1.6"/><circle class="led" style="--d:1.3s" cx="143" cy="7" r="1.6"/></g>
+              <circle cx="176" cy="17" r="3" fill="#5ab0ff"/>
+            </g>
+            <!-- patch cables -->
+            <path d="M71 70 C71 88, 110 84, 110 98" stroke="#ff8a3d" stroke-width="2.5" fill="none"/>
+            <path d="M89 70 C89 92, 160 84, 160 98" stroke="#5ab0ff" stroke-width="2.5" fill="none"/>
+            <path d="M107 70 C107 96, 210 86, 210 98" stroke="#ff8a3d" stroke-width="2.5" fill="none" opacity=".8"/>
+            <!-- servers -->
+            <g transform="translate(54 98)">
+              <rect width="192" height="52" rx="4" fill="#17171c" stroke="#2c2c34"/>
+              <g fill="#0d0d11" stroke="#30303a"><rect x="10" y="10" width="34" height="32" rx="2"/><rect x="50" y="10" width="34" height="32" rx="2"/><rect x="90" y="10" width="34" height="32" rx="2"/></g>
+              <g fill="#5ab0ff"><circle class="led" style="--d:.8s" cx="38" cy="36" r="1.8"/><circle class="led" style="--d:1.2s;--o:.3s" cx="78" cy="36" r="1.8"/><circle class="led" style="--d:.6s;--o:.5s" cx="118" cy="36" r="1.8"/></g>
+              <text x="140" y="24" font-family="JetBrains Mono, monospace" font-size="8" fill="#8e8e96">VM HOST</text>
+              <circle cx="176" cy="36" r="3" fill="#3ddc84"/>
+            </g>
+            <g transform="translate(54 160)">
+              <rect width="192" height="52" rx="4" fill="#17171c" stroke="#2c2c34"/>
+              <g fill="#0d0d11" stroke="#30303a"><rect x="10" y="10" width="34" height="32" rx="2"/><rect x="50" y="10" width="34" height="32" rx="2"/><rect x="90" y="10" width="34" height="32" rx="2"/></g>
+              <g fill="#ff8a3d"><circle class="led" style="--d:1s" cx="38" cy="36" r="1.8"/><circle class="led" style="--d:.7s;--o:.2s" cx="78" cy="36" r="1.8"/><circle class="led" style="--d:1.4s" cx="118" cy="36" r="1.8"/></g>
+              <text x="140" y="24" font-family="JetBrains Mono, monospace" font-size="8" fill="#8e8e96">SERVER</text>
+              <circle cx="176" cy="36" r="3" fill="#3ddc84"/>
+            </g>
+            <!-- mini pc shelf -->
+            <g transform="translate(54 222)">
+              <rect width="192" height="64" rx="4" fill="#111115" stroke="#2c2c34"/>
+              <rect x="22" y="22" width="70" height="30" rx="8" fill="#c9c9d1"/>
+              <rect x="22" y="22" width="70" height="6" rx="3" fill="#ffffff" opacity=".5"/>
+              <circle cx="84" cy="44" r="1.8" fill="#ffffff" class="led" style="--d:2s"/>
+              <text x="108" y="34" font-family="JetBrains Mono, monospace" font-size="8" fill="#8e8e96">MAC MINI</text>
+              <text x="108" y="46" font-family="JetBrains Mono, monospace" font-size="8" fill="#ff8a3d">LOCAL AI</text>
+            </g>
+            <!-- vents -->
+            <g stroke="#1e1e25" stroke-width="2">
+              <line x1="64" y1="306" x2="236" y2="306"/><line x1="64" y1="314" x2="236" y2="314"/><line x1="64" y1="322" x2="236" y2="322"/><line x1="64" y1="330" x2="236" y2="330"/><line x1="64" y1="338" x2="236" y2="338"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <div class="panels">
+            <div class="panel on" data-glow="rgba(90,176,255,.30)">
+              <p class="eyebrow">Home Lab · Server</p>
+              <h2 class="h2"><span class="metal">A data center,</span> <span class="hot">at home.</span></h2>
+              <p>My home server is where I learn by doing. <b>I run virtual machines for Windows, Linux and macOS</b> to test installs, imaging and configs before they ever touch a real machine.</p>
+              <div class="chips"><span class="chip">Virtual machines</span><span class="chip">Windows</span><span class="chip">Linux</span><span class="chip">macOS</span></div>
+            </div>
+            <div class="panel" data-glow="rgba(255,138,61,.30)">
+              <p class="eyebrow">Home Lab · Local AI</p>
+              <h2 class="h2"><span class="metal">Private AI.</span> <span class="hot">No cloud.</span></h2>
+              <p>A <b>Mac mini that runs AI models locally with Ollama</b> and the open-source OpenJarvis framework, so my data stays on my own hardware instead of a cloud service.</p>
+              <div class="chips"><span class="chip">Ollama</span><span class="chip">OpenJarvis</span><span class="chip">Apple silicon</span></div>
+            </div>
+            <div class="panel" data-glow="rgba(61,220,132,.24)">
+              <p class="eyebrow">Home Lab · Network</p>
+              <h2 class="h2"><span class="metal">Wired</span> <span class="hot">right.</span></h2>
+              <p>Switches, cabling and wireless access points. <b>I maintain servers and network gear at work</b>, and my home lab is where I try things out first.</p>
+              <div class="chips"><span class="chip">Network switches</span><span class="chip">Custom cabling</span><span class="chip">Servers</span></div>
+            </div>
+          </div>
+          <div class="dots" aria-hidden="true"><i><span></span></i><i><span></span></i><i><span></span></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILD -->
+  <section class="build" id="build">
+    <div class="wrap center rv">
+      <p class="eyebrow">The Build</p>
+      <h2 class="h2"><span class="metal">Built by hand.</span><br><span class="metal">Tuned for speed.</span></h2>
+      <p class="lead">My daily driver is a custom gaming PC I put together myself. It runs everything from iRacing on my sim rig to the VMs I spin up for testing, all on a Samsung 990 Pro NVMe.</p>
+    </div>
+    <div class="wrap">
+      <div class="specs rv">
+        <div class="spec"><span class="num" data-count="8">0</span><span class="lbl">Cores · Ryzen 7 7800X3D</span><span class="sub">16 threads</span></div>
+        <div class="spec"><span class="num">3080</span><span class="lbl">NVIDIA RTX</span><span class="sub">Factory-overclocked GPU</span></div>
+        <div class="spec"><span class="num" data-count="96">0</span><span class="lbl">MB of L3 cache</span><span class="sub">AMD 3D V-Cache for gaming</span></div>
+        <div class="spec"><span class="num">1440<sup>p</sup></span><span class="lbl">ASUS ROG QD-OLED</span><span class="sub">Plus a 34″ LG ultrawide</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO -->
+  <section id="bench">
+    <div class="wrap center rv">
+      <p class="eyebrow">On the Bench</p>
+      <h2 class="h2"><span class="metal">Everything I can</span><br><span class="metal">take apart.</span></h2>
+    </div>
+    <div class="wrap bento">
+      <div class="tile t-wide rv">
+        <span class="k">Hardware</span>
+        <h3>PC and laptop repair, servers, switches.</h3>
+        <p>I assemble, diagnose and maintain desktops, laptops, servers and network switches, from a single dead drive to a full rebuild.</p>
+        <svg viewBox="0 0 520 90" aria-hidden="true">
+          <g fill="none" stroke="#2c2c34" stroke-width="1.5">
+            <rect x="2" y="10" width="110" height="70" rx="8"/><rect x="138" y="10" width="110" height="70" rx="8"/><rect x="274" y="10" width="110" height="70" rx="8"/><rect x="410" y="10" width="108" height="70" rx="8"/>
+          </g>
+          <text x="57" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#8e8e96">DIAGNOSE</text>
+          <text x="193" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#8e8e96">REPAIR</text>
+          <text x="329" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#8e8e96">IMAGE</text>
+          <text x="464" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#ff8a3d">DEPLOY</text>
+          <g stroke="#ff8a3d" stroke-width="1.5"><line x1="114" y1="45" x2="136" y2="45"/><line x1="250" y1="45" x2="272" y2="45"/><line x1="386" y1="45" x2="408" y2="45"/></g>
+        </svg>
+      </div>
+      <div class="tile t-sm rv">
+        <span class="k">Operating systems</span>
+        <h3>XP to 11.</h3>
+        <p>Windows 11, 10, 7, Vista and XP, plus macOS and Linux distros.</p>
+      </div>
+      <div class="tile t-half rv">
+        <span class="k">Enterprise IT</span>
+        <h3>Imaging, tickets, inventory.</h3>
+        <p>PXE imaging, Active Directory, Intune, BitLocker and VPN setup, plus ticket queues and hardware inventory.</p>
+        <div class="chips"><span class="chip">Active Directory</span><span class="chip">Intune</span><span class="chip">PowerShell</span><span class="chip">BitLocker</span></div>
+      </div>
+      <div class="tile t-half rv">
+        <span class="k">Code and data</span>
+        <h3>Python, Java, SQL.</h3>
+        <p>JavaFX apps, Oracle databases with PL/SQL procedures, and data cleaning for analytics projects.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">Oracle SQL</span><span class="chip">Excel</span></div>
+      </div>
+      <div class="tile t-sm rv">
+        <span class="k">Security</span>
+        <h3>Wiped clean.</h3>
+        <p>Data sanitization for decommissioned computers and servers.</p>
+      </div>
+      <div class="tile t-wide rv">
+        <span class="k">Side build</span>
+        <h3>The sim rig.</h3>
+        <p>An aluminum-profile cockpit with a Moza R9 direct-drive wheel base and SR-P pedals, with a triple-monitor upgrade on the way. Cable management counts as a skill.</p>
+        <svg viewBox="0 0 520 110" aria-hidden="true">
+          <g fill="#0d0d11" stroke="#3a3a44" stroke-width="1.5">
+            <rect x="40" y="18" width="130" height="62" rx="4" transform="rotate(-10 105 49)"/>
+            <rect x="190" y="10" width="140" height="70" rx="4"/>
+            <rect x="350" y="18" width="130" height="62" rx="4" transform="rotate(10 415 49)"/>
+          </g>
+          <rect x="190" y="10" width="140" height="70" rx="4" fill="url(#rgbG)" opacity=".18"/>
+          <circle cx="260" cy="96" r="14" fill="none" stroke="#ff8a3d" stroke-width="3"/>
+          <line x1="246" y1="96" x2="274" y2="96" stroke="#ff8a3d" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap center rv">
+      <p class="eyebrow">Contact</p>
+      <h2 class="h2"><span class="metal">Let’s build</span> <span class="hot">something.</span></h2>
+      <p class="lead">B.S. in Information Systems at UMBC, 3.5 GPA, graduating May 2027. Open to internships and IT roles.</p>
+      <span class="mail" id="mail">Dislam1@umbc.edu</span>
+      <button class="copy" id="copyBtn">Copy email</button>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/daniyal-islam" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4v-11Z"/></svg>LinkedIn</a>
+        <a href="https://app.joinhandshake.com/profiles/xd8wd6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7 4v16M17 4v16M7 12h10"/></svg>Handshake</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Daniyal Islam · Ellicott City, MD</span><a href="https://www.linkedin.com/in/daniyal-islam" target="_blank" rel="noopener">LinkedIn ↗</a></div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add("js");
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+  // scroll progress
+  var prog = document.getElementById("prog");
+  function sp() { var h = document.documentElement.scrollHeight - innerHeight; prog.style.setProperty("--sp", h > 0 ? scrollY / h : 0); }
+  addEventListener("scroll", sp, { passive: true }); sp();
+
+  // hero spotlight + PC tilt
+  var hero = document.getElementById("hero"), grid = hero.querySelector(".grid-bg"), tilt = document.getElementById("tilt");
+  hero.addEventListener("pointermove", function (e) {
+    var r = grid.getBoundingClientRect();
+    grid.style.setProperty("--hx", (e.clientX - r.left) + "px"); grid.style.setProperty("--hy", (e.clientY - r.top) + "px");
+    if (reduce || e.pointerType !== "mouse") return;
+    var t = tilt.getBoundingClientRect(), x = (e.clientX - t.left) / t.width - .5, y = (e.clientY - t.top) / t.height - .5;
+    tilt.style.setProperty("--ty", Math.max(-1, Math.min(1, x)) * 10 + "deg");
+    tilt.style.setProperty("--tx", Math.max(-1, Math.min(1, y)) * -8 + "deg");
+  });
+  hero.addEventListener("pointerleave", function () { tilt.style.setProperty("--tx", "0deg"); tilt.style.setProperty("--ty", "0deg"); });
+
+  // dropdown
+  var wrap = document.getElementById("menuWrap"), btn = document.getElementById("menuBtn");
+  function setOpen(o) { wrap.classList.toggle("open", o); btn.setAttribute("aria-expanded", o); }
+  btn.addEventListener("click", function (e) { e.stopPropagation(); setOpen(!wrap.classList.contains("open")); });
+  document.addEventListener("click", function () { setOpen(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var t = document.querySelector(a.getAttribute("href"));
+      if (!t) return; e.preventDefault(); setOpen(false);
+      t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    });
+  });
+
+  // reveal + counters
+  function count(el) {
+    var end = +el.dataset.count, t0 = null;
+    if (reduce) { el.textContent = end; return; }
+    function step(t) { if (!t0) t0 = t; var p = Math.min((t - t0) / 1200, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll("[data-count]").forEach(function (el) { el.textContent = el.dataset.count; });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        e.target.querySelectorAll("[data-count]").forEach(count);
+        io.unobserve(e.target);
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
+  } else { document.querySelectorAll(".rv").forEach(function (el) { el.classList.add("in"); }); }
+
+  // home lab scrub
+  var lab = document.getElementById("lab"), rack = document.getElementById("rack"), art = document.getElementById("labArt");
+  var panels = lab.querySelectorAll(".panel"), bars = lab.querySelectorAll(".dots i span"), cur = 0;
+  function onScroll() {
+    var r = lab.getBoundingClientRect(), span = r.height - innerHeight;
+    var p = Math.min(Math.max(-r.top / span, 0), 1);
+    var idx = Math.min(Math.floor(p * 3), 2);
+    if (idx !== cur) {
+      panels[cur].classList.remove("on"); panels[idx].classList.add("on"); cur = idx;
+      art.style.setProperty("--glow", panels[idx].dataset.glow);
+    }
+    bars.forEach(function (b, i) { b.style.setProperty("--p", Math.min(Math.max(p * 3 - i, 0), 1)); });
+    if (!reduce) rack.style.transform = "scale(" + (0.86 + p * 0.22) + ") rotate(" + (-3 + p * 6) + "deg)";
+  }
+  addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll); onScroll();
+
+  // tile tilt + spotlight
+  document.querySelectorAll(".tile").forEach(function (t) {
+    t.addEventListener("pointermove", function (e) {
+      var r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      t.style.setProperty("--mx", x * 100 + "%"); t.style.setProperty("--my", y * 100 + "%");
+      if (!reduce && e.pointerType === "mouse") { t.style.setProperty("--ry", (x - .5) * 6 + "deg"); t.style.setProperty("--rx", (.5 - y) * 6 + "deg"); }
+    });
+    t.addEventListener("pointerleave", function () { t.style.setProperty("--rx", "0deg"); t.style.setProperty("--ry", "0deg"); });
+  });
+
+  // rail buttons
+  var rail = document.getElementById("rail");
+  var jobs = rail.querySelectorAll(".job"), prevB = document.getElementById("prev"), nextB = document.getElementById("next");
+  function pad() { return parseFloat(getComputedStyle(rail).paddingLeft) || 0; }
+  function nearest() {
+    var x = rail.scrollLeft, best = 0, bd = Infinity;
+    jobs.forEach(function (j, i) { var d = Math.abs(j.offsetLeft - pad() - x); if (d < bd) { bd = d; best = i; } });
+    return best;
+  }
+  function slide(d) {
+    var i = Math.max(0, Math.min(jobs.length - 1, nearest() + d));
+    var max = rail.scrollWidth - rail.clientWidth;
+    var left = Math.max(0, Math.min(max, jobs[i].offsetLeft - pad()));
+    if (left === rail.scrollLeft && d > 0) left = max;
+    try { rail.scrollTo({ left: left, behavior: reduce ? "auto" : "smooth" }); } catch (e) { rail.scrollLeft = left; }
+  }
+  function ends() {
+    var max = rail.scrollWidth - rail.clientWidth;
+    prevB.disabled = rail.scrollLeft <= 2; nextB.disabled = rail.scrollLeft >= max - 2;
+  }
+  prevB.addEventListener("click", function () { slide(-1); });
+  nextB.addEventListener("click", function () { slide(1); });
+  rail.addEventListener("scroll", ends, { passive: true }); addEventListener("resize", ends); ends();
+
+  // copy email
+  var cb = document.getElementById("copyBtn"), mail = document.getElementById("mail");
+  cb.addEventListener("click", function () {
+    var txt = mail.textContent;
+    function sel() { var r = document.createRange(); r.selectNodeContents(mail); var s = getSelection(); s.removeAllRanges(); s.addRange(r); cb.textContent = "Selected, press copy"; }
+    try { navigator.clipboard.writeText(txt).then(function () { cb.textContent = "Copied"; setTimeout(function () { cb.textContent = "Copy email"; }, 1800); }, sel); }
+    catch (e) { sel(); }
+  });
+})();
+</script>
+</body>
+</html>
